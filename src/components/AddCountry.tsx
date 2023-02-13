@@ -40,7 +40,7 @@ const AddCountry: React.FC<Props> = ({ saveCountry }) => {
           <label htmlFor="latitude">Latitude</label>
           <input
             onChange={handleForm}
-            type="text"
+            type="number"
             id="latitude"
           />
         </div>
@@ -48,7 +48,7 @@ const AddCountry: React.FC<Props> = ({ saveCountry }) => {
           <label htmlFor="longitude">Longitude</label>
           <input
             onChange={handleForm}
-            type="text"
+            type="number"
             id="longitude"
           />
         </div>
