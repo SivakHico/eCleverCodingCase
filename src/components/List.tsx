@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { getCountries, addTodo, updateTodo, deleteTodo } from '../API'
+import { getCountries, addCountry, updateTodo, deleteTodo } from '../API'
+import AddCountry from '../components/AddCountry'
+import '../App.css'
 
 const List: React.FC = () => {
   const [countries, setCountries] = useState<ICountry[]>([])
@@ -10,17 +12,29 @@ const List: React.FC = () => {
       .catch((err: Error) => console.log(err))
   }, [])
 
-  return (
-    <main className="App">
-      <h1>Form</h1>
+  const handleSaveCountry = (e: React.FormEvent, formData: ICountry): void => {
+    e.preventDefault()
+    addCountry(formData)
+      .then(({ status, data }) => {
+        if (status !== 201) {
+          throw new Error('Error! Todo not saved')
+        }
+        setCountries((prevCountries) => [data, ...prevCountries])
+      })
+      .catch((err) => console.log(err))
+  }
 
+  return (
+    <div className="menu">
+      <h1>Form</h1>
+      <AddCountry saveCountry={handleSaveCountry} />
       {countries.map((country: ICountry) => (
         <div key={country._id}>
           <h3>{country.name}</h3>
           <p></p>
         </div>
       ))}
-    </main>
+    </div>
   )
 }
 

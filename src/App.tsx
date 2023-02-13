@@ -4,11 +4,9 @@ import './App.css'
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Map />
-      <div className="menu">
-        <List />
-      </div>
+      <List />
     </div>
   )
 }

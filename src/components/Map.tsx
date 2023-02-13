@@ -4,9 +4,8 @@ import '../App.css'
 
 function Map() {
   return (
-    <div>
+    <div className="map">
       <MapContainer
-        className="map"
         center={[48, 20]}
         zoom={5}
         scrollWheelZoom={true}

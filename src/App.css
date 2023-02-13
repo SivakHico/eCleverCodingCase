@@ -20,7 +20,7 @@
   height: 100vh;
 }
 
-.map {
+.map div {
   position: unset !important;
 }
 

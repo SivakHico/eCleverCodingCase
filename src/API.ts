@@ -14,20 +14,21 @@ export const getCountries = async (): Promise<AxiosResponse<ICountry>> => {
     }
 }
 
-export const addTodo = async (
+export const addCountry = async (
     formData: ICountry
 ): Promise<AxiosResponse<ICountry>> => {
     try {
-        const todo: Omit<ICountry, '_id'> = {
+        const country: Omit<ICountry, '_id'> = {
+            country: formData.country,
             name: formData.name,
-            description: formData.description,
-            status: false,
+            latitude: formData.latitude,
+            longitude: formData.longitude,
         }
-        const saveTodo: AxiosResponse<ICountry> = await axios.post(
-            baseUrl + '/add-todo',
-            todo
+        const saveCountry: AxiosResponse<ICountry> = await axios.post(
+            baseUrl + '/add-country',
+            country
         )
-        return saveTodo
+        return saveCountry
     } catch (error) {
         throw new Error(error)
     }
