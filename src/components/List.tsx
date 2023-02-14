@@ -15,13 +15,11 @@ const List: React.FC = () => {
   const handleSaveCountry = (e: React.FormEvent, formData: ICountry): void => {
     e.preventDefault()
     addCountry(formData)
-      .then(({ status, data }) => {
-        if (status !== 201) {
-          throw new Error('Error! Todo not saved')
-        }
-        setCountries((prevCountries) => [data, ...prevCountries])
+      .then(({ data: item }: ICountry | any) => {
+        setCountries([...countries, item])
+        console.log('New Country added!')
       })
-      .catch((err) => console.log(err))
+      .catch((err: Error) => console.log(err))
   }
 
   return (

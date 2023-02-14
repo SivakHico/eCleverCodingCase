@@ -18,16 +18,17 @@ export const addCountry = async (
     formData: ICountry
 ): Promise<AxiosResponse<ICountry>> => {
     try {
-        const country: Omit<ICountry, '_id'> = {
+        const countroo: Omit<ICountry, '_id'> = {
             country: formData.country,
             name: formData.name,
             latitude: formData.latitude,
-            longitude: formData.longitude,
+            longitude: formData.longitude
         }
         const saveCountry: AxiosResponse<ICountry> = await axios.post(
-            baseUrl + '/add-country',
-            country
+            baseUrl + '/',
+            countroo
         )
+        console.log('API Data: ', saveCountry.data)
         return saveCountry
     } catch (error) {
         throw new Error(error)
