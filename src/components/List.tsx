@@ -24,14 +24,19 @@ const List: React.FC = () => {
 
   return (
     <div className="menu">
-      <h2 className='form-header'>Maping all over the World</h2>
+      <h2 className="form-header">Maping all over the World</h2>
       <AddCountry saveCountry={handleSaveCountry} />
-      {countries.map((country: ICountry) => (
-        <div key={country._id}>
-          <h3>{country.name}</h3>
-          <p></p>
-        </div>
-      ))}
+
+      {countries
+        .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0))
+        .map((country: ICountry) => (
+          <div className='country-list' key={country._id}>
+            <h3>{country.name}</h3>
+            <button className="edit-capital">edit</button>
+            <button className="delete-capital">delete</button>
+            <hr />
+          </div>
+        ))}
     </div>
   )
 }

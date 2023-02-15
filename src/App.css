@@ -44,6 +44,8 @@ body {
   height: 30px;
   width: 30px;
   z-index: 9999;
+  bottom: -42px;
+  left: 68px;
 }
 
 .mar-left {
@@ -64,46 +66,29 @@ body {
   margin: 15px 0;
 }
 
-.add-country {
+.add-country,
+.edit-capital,
+.delete-capital {
   padding: 10px 20px;
   background: black;
   color: white;
   border-radius: 2px;
-}
-
-.collapsible {
-  background-color: #777;
-  color: white;
+  margin-right: 20px;
   cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
 }
 
-.active,
-.collapsible:hover {
-  background-color: #555;
+.add-country:hover,
+.edit-capital:hover,
+.delete-capital:hover {
+  background: #333;
 }
 
-.collapsible:after {
-  content: '\002B';
-  color: white;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
+.dis-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.active:after {
-  content: "\2212";
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
+.customIcon i {
+  font-size: 32px;
 }

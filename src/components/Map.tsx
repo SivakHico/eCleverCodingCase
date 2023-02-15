@@ -1,7 +1,8 @@
 import { React, useEffect, useState } from 'react'
 import { getCountries, addCountry, updateTodo, deleteTodo } from '../API'
 import markerIconSvg from '../img/square-icon.svg'
-import { Icon } from 'leaflet'
+import { Icon, divIcon } from 'leaflet'
+import '../App.css'
 import {
   MapContainer,
   TileLayer,
@@ -32,6 +33,13 @@ function Map() {
     })
   }
 
+  const customIcon = divIcon({
+    className: '',
+    iconSize: [32, 32],
+    popupAnchor: [0, -20],
+    html: `<div class="customIcon" style="color: ${color}"><i class="fas fa-square"></i></div>`,
+  })
+
   return (
     <div className="map">
       <MapContainer
@@ -49,15 +57,10 @@ function Map() {
               country.latitude ? country.latitude : (country.latitude = 0),
               country.longitude ? country.longitude : (country.longitude = 0),
             ]}
-            icon={
-              new Icon({
-                iconUrl: markerIconSvg,
-                iconSize: [32, 32],
-                iconAnchor: [5, 10],
-              })
-            }
+            icon={customIcon}
           >
             <Popup>
+              <h4>Welcome to {country.name}</h4>
               <input
                 onChange={(e) => {
                   setColor(e.target.value)
@@ -77,5 +80,3 @@ function Map() {
 }
 
 export default Map
-
-

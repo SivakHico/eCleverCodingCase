@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import '../App.css'
-import '../js/collapsible.js'
 
 type Props = {
   saveCountry: (e: React.FormEvent, formData: ICountry | any) => void
@@ -18,12 +17,11 @@ const AddCountry: React.FC<Props> = ({ saveCountry }) => {
 
   return (
     <>
-      <button className="collapsible">Add new Location</button>
       <form
-        className="Form content"
+        className="Form"
         onSubmit={(e) => saveCountry(e, formData)}
       >
-        <div>
+        <div className="dis-flex">
           <div>
             <label htmlFor="country">Country</label>
             <input
@@ -62,11 +60,13 @@ const AddCountry: React.FC<Props> = ({ saveCountry }) => {
           </div>
         </div>
         <button
+          type="submit"
           className="add-country"
           disabled={formData === undefined ? true : false}
         >
           Add Country
         </button>
+        <hr />
       </form>
     </>
   )
