@@ -24,7 +24,7 @@ const List: React.FC = () => {
 
   return (
     <div className="menu">
-      <h1>Form</h1>
+      <h2 className='form-header'>Maping all over the World</h2>
       <AddCountry saveCountry={handleSaveCountry} />
       {countries.map((country: ICountry) => (
         <div key={country._id}>

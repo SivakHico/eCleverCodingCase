@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react'
 import { getCountries, addCountry, updateTodo, deleteTodo } from '../API'
-import markerIconPng from 'leaflet/dist/images/marker-icon.png'
+import markerIconSvg from '../img/square-icon.svg'
 import { Icon } from 'leaflet'
 import {
   MapContainer,
@@ -15,6 +15,7 @@ import { map } from 'leaflet'
 
 function Map() {
   const [xxx, setXXX] = useState<ICountry[]>([])
+  const [color, setColor] = useState<string>('#ff0000')
 
   useEffect(() => {
     getCountries()
@@ -50,22 +51,25 @@ function Map() {
             ]}
             icon={
               new Icon({
-                iconUrl: markerIconPng,
-                iconSize: [30, 30],
-                iconAnchor: [12, 41],
+                iconUrl: markerIconSvg,
+                iconSize: [32, 32],
+                iconAnchor: [5, 10],
               })
             }
           >
-            <Popup>{country.latitude}</Popup>
-            <input
-              className="colorpicker"
-              type="color"
-              id="colorpicker"
-              value="#0000ff"
-            ></input>
+            <Popup>
+              <input
+                onChange={(e) => {
+                  setColor(e.target.value)
+                }}
+                className="colorpicker"
+                type="color"
+                id="colorpicker"
+                value={color}
+              ></input>
+            </Popup>
           </Marker>
         ))}
-
         <ChangeView />
       </MapContainer>
     </div>
@@ -73,3 +77,5 @@ function Map() {
 }
 
 export default Map
+
+

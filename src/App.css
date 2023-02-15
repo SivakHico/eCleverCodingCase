@@ -1,3 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #ffffff;
+  font-size: 11px;
+}
+
 .map-container {
   height: 400px;
 }
@@ -20,19 +28,15 @@
   height: 100vh;
 }
 
-.map div {
-  position: unset !important;
-}
-
 .menu {
   position: absolute;
   background: white;
   height: 100vh;
   width: 350px;
   z-index: 9999;
-  opacity: .8;
   top: 0;
   right: 0;
+  padding: 0 15px;
 }
 
 .colorpicker {
@@ -40,4 +44,66 @@
   height: 30px;
   width: 30px;
   z-index: 9999;
+}
+
+.mar-left {
+  margin-left: 25px;
+}
+
+.input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  padding: 5px 5px;
+  margin: 1px 0 10px 0;
+  box-sizing: border-box;
+}
+
+.form-header {
+  margin: 15px 0;
+}
+
+.add-country {
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  border-radius: 2px;
+}
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
 }
