@@ -1,7 +1,6 @@
-import { React, useEffect, useState } from 'react'
-import { getCountries, addCountry, updateTodo, deleteTodo } from '../API'
-import markerIconSvg from '../img/square-icon.svg'
-import { Icon, divIcon } from 'leaflet'
+import { useEffect, useState } from 'react'
+import { getCountries } from '../API'
+import { divIcon } from 'leaflet'
 import '../App.css'
 import {
   MapContainer,
@@ -12,15 +11,15 @@ import {
   useMapEvents,
 } from 'react-leaflet'
 import '../App.css'
-import { map } from 'leaflet'
 
 function Map() {
-  const [xxx, setXXX] = useState<ICountry[]>([])
+  const [Countriii, setCountry] = useState<ICountry[]>([])
   const [color, setColor] = useState<string>('#ff0000')
+  const [active, setActive] = useState(-1)
 
   useEffect(() => {
     getCountries()
-      .then(({ data: item }: ICountry[] | any) => setXXX(item))
+      .then(({ data: item }: ICountry[] | any) => setCountry(item))
       .catch((err: Error) => console.log(err))
   }, [])
 
@@ -33,13 +32,6 @@ function Map() {
     })
   }
 
-  const customIcon = divIcon({
-    className: '',
-    iconSize: [32, 32],
-    popupAnchor: [0, -20],
-    html: `<div class="customIcon" style="color: ${color}"><i class="fas fa-square"></i></div>`,
-  })
-
   return (
     <div className="map">
       <MapContainer
@@ -51,25 +43,30 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {xxx.map((country: ICountry) => (
+        {Countriii.map((country: ICountry, index) => (
           <Marker
             position={[
               country.latitude ? country.latitude : (country.latitude = 0),
               country.longitude ? country.longitude : (country.longitude = 0),
             ]}
-            icon={customIcon}
+            icon={divIcon({
+              className: '',
+              iconSize: [32, 32],
+              popupAnchor: [0, -20],
+              html: `<div class="customIcon"><i style=color:${
+                active === index ? color : 'blue'
+              } class="fas fa-square"></i></div>`,
+            })}
           >
             <Popup>
               <h4>Welcome to {country.name}</h4>
+              <h6 className="change-color-h6">Change the color</h6>
               <input
-                onChange={(e) => {
-                  setColor(e.target.value)
-                }}
-                className="colorpicker"
+                className="change-color"
                 type="color"
-                id="colorpicker"
+                onChange={(e) => setColor(e.target.value)}
                 value={color}
-              ></input>
+              />
             </Popup>
           </Marker>
         ))}

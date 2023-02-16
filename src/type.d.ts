@@ -4,3 +4,7 @@ interface ICountry {
     latitude: number
     longitude: number
 }
+
+type CountryProps = {
+    country: ICountry
+}

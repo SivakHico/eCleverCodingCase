@@ -35,31 +35,31 @@ export const addCountry = async (
     }
 }
 
-export const updateTodo = async (
-    todo: ICountry
+export const updateCountro = async (
+    country: ICountry
 ): Promise<AxiosResponse<ICountry>> => {
     try {
-        const todoUpdate: Pick<ICountry, 'status'> = {
+        const updateCountry: Pick<ICountry, 'status'> = {
             status: true,
         }
-        const updatedTodo: AxiosResponse<ICountry> = await axios.put(
-            `${baseUrl}/edit-todo/${todo._id}`,
-            todoUpdate
+        const updatedCountry: AxiosResponse<ICountry> = await axios.put(
+            `${baseUrl}/edit-country/${country._id}`,
+            updateCountry
         )
-        return updatedTodo
+        return updatedCountry
     } catch (error) {
         throw new Error(error)
     }
 }
 
-export const deleteTodo = async (
+export const deleteCountry = async (
     _id: string
 ): Promise<AxiosResponse<ICountry>> => {
     try {
-        const deletedTodo: AxiosResponse<ICountry> = await axios.delete(
-            `${baseUrl}/delete-todo/${_id}`
+        const deletedCountry: AxiosResponse<ICountry> = await axios.delete(
+            `${baseUrl}/delete-country/${_id}`
         )
-        return deletedTodo
+        return deletedCountry
     } catch (error) {
         throw new Error(error)
     }

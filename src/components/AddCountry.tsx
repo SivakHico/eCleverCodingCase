@@ -64,7 +64,7 @@ const AddCountry: React.FC<Props> = ({ saveCountry }) => {
           className="add-country"
           disabled={formData === undefined ? true : false}
         >
-          Add Country
+          Add Content
         </button>
         <hr />
       </form>
